@@ -109,17 +109,30 @@ public class PastaPage extends BasePage {
 
     public void getPricesAsc() {
         List<WebElement> pricesList = driver.findElements(By.xpath(prices));
-        for(int i =0; i<pricesList.size(); i++){
-            System.out.println(i + ": " + pricesList.get(i));
+        String[] arr = integerValues(pricesList);
+
+        for(int i =0; i<arr.length; i++){
+            System.out.println(i + ": " + arr[i]);
         }
     }
 
     public void getPricesDesc() {
         List<WebElement> pricesList = driver.findElements(By.xpath(prices));
-        for(int i =0; i<pricesList.size(); i++){
-            System.out.println(i + ": " + pricesList.get(i));
+        String[] arr = integerValues(pricesList);
+        for(int i =0; i<arr.length; i++){
+            System.out.println(i + ": " + arr[i]);
         }
 
     }
 
+    public static String[] integerValues(List<WebElement> pricesList){
+
+        String[] str = new String[3];
+        int size = str.length;
+        for(int i = 0;i<size;i++){
+            str[i] = pricesList.get(i).getText().replace(currency, emptyString);
+        }
+
+        return str;
+    }
 }

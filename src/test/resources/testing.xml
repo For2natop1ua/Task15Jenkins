@@ -7,12 +7,10 @@
                 <exclude name="exclude" />
             </run>
         </groups>
-
         <classes>
             <class name="testClasses.TestFieldValidation"/>
             <class name="testClasses.TestPriceDesc"/>
             <class name="testClasses.TestPriceAsc"/>
-            <class name="testClasses.TestVerifyList"/>
         </classes>
     </test>
 </suite>
