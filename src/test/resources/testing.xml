@@ -7,14 +7,12 @@
                 <exclude name="exclude" />
             </run>
         </groups>
-        <packages>
-            <package name="testClasses" />
-        </packages>
+
         <classes>
-            <class name="testClasses.TestFieldValidation"/>
+
             <class name="testClasses.TestPriceDesc"/>
             <class name="testClasses.TestPriceAsc"/>
-            <class name="testClasses.TestVerifyList"/>
+
         </classes>
     </test>
 </suite>

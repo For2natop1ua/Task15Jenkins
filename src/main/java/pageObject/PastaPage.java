@@ -109,23 +109,32 @@ public class PastaPage extends BasePage {
 
     public void getPricesAsc() {
         List<WebElement> pricesList = driver.findElements(By.xpath(prices));
-        String[] arr = integerValues(pricesList);
+        int[] arr = integerValues(pricesList);
 
-        for(int i =0; i<arr.length; i++){
-            System.out.println(i + ": " + arr[i]);
+        if(arr[0]<=arr[1] && arr[1]<=arr[2]) {
+            String correct = "Correct!";
+            Assert.assertEquals(correct, "Correct!");
+        }
+        else {
+            String correct = "Incorrect!";
+            Assert.assertEquals(correct, "Correct!");
         }
     }
 
     public void getPricesDesc() {
         List<WebElement> pricesList = driver.findElements(By.xpath(prices));
-        String[] arr = integerValues(pricesList);
-        for(int i =0; i<arr.length; i++){
-            System.out.println(i + ": " + arr[i]);
+        int[] arr = integerValues(pricesList);
+        if(arr[0]>=arr[1] && arr[1]>=arr[2]) {
+            String correct = "Correct!";
+            Assert.assertEquals(correct, "Correct!");
         }
-
+        else {
+            String correct = "Incorrect!";
+            Assert.assertEquals(correct, "Correct!");
+        }
     }
 
-    public static String[] integerValues(List<WebElement> pricesList){
+    public static int[] integerValues(List<WebElement> pricesList){
 
         String[] str = new String[3];
         int size = str.length;
@@ -133,6 +142,11 @@ public class PastaPage extends BasePage {
             str[i] = pricesList.get(i).getText().replace(currency, emptyString);
         }
 
-        return str;
+        int[] arr = new int [size];
+        for(int i =0; i<size; i++){
+            arr[i] = Integer.parseInt(str[i].trim());
+        }
+
+        return arr;
     }
 }
